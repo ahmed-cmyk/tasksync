@@ -124,6 +124,104 @@ dotnet run
 
 ---
 
+
+## 🧠 Functional Breakdown
+
+This section describes the responsibilities and features of each major component of the TaskSync application.
+
+---
+
+### 🔧 **Backend (NestJS)**
+
+* **Authentication & Authorization**
+
+  * JWT or OAuth2 login
+  * Role-based access: Admin, Manager, Member
+
+* **Task & Project APIs**
+
+  * Create, update, delete tasks
+  * Assign tasks to users
+  * Organize tasks by projects
+  * Filter/search by status, tags, priority, etc.
+
+* **Real-Time Features**
+
+  * WebSocket support for live updates
+  * Notify users when tasks are created/updated
+
+* **Caching (Memcached)**
+
+  * Store frequently accessed tasks
+  * Cache user session data
+  * Reduce DB load and improve API response times
+
+* **Security & Scalability**
+
+  * Input validation and sanitization
+  * Rate limiting
+  * Modular code structure (domain-driven)
+
+---
+
+### 📱 **Mobile App (React Native)**
+
+* **User Interface**
+
+  * Login and registration flows
+  * Task list with quick actions
+  * Task detail and edit screens
+
+* **Task Features**
+
+  * Mark as done, change priority, add notes
+  * Task creation and deletion
+
+* **Project Views**
+
+  * Switch between projects
+  * View progress and status per project
+
+* **Offline Support**
+
+  * Store unsynced changes locally
+  * Sync with backend when reconnected
+
+* **Notifications**
+
+  * Push/local notifications for task changes or assignments
+
+---
+
+### 🖥 **Desktop App (Avalonia UI)**
+
+* **Task Management Dashboard**
+
+  * Kanban-style drag-and-drop task board
+  * Advanced filtering and sorting
+  * Quick status and priority adjustments
+
+* **Analytics and Reporting**
+
+  * Visualizations for task progress and team activity
+  * Charts for completion rates, overdue tasks, etc.
+
+* **User & Team Management**
+
+  * Add/remove team members
+  * Assign roles and permissions
+
+* **Offline Functionality**
+
+  * Full functionality in offline mode
+  * Sync when online
+
+* **Cross-Platform Desktop Support**
+
+  * Runs on Windows, macOS, and Linux
+
+---
+
 ## 🧪 Testing
 
 * Backend: Jest (included with NestJS)
