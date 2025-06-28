@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
-import { Project, Prisma } from '@prisma/client';
+import { Project as ProjectModel, Prisma } from '@prisma/client';
 
 @Injectable()
 export class ProjectsService {
@@ -8,7 +8,7 @@ export class ProjectsService {
 
   async project(
     projectWhereUniqueInput: Prisma.ProjectWhereUniqueInput,
-  ): Promise<Project | null> {
+  ): Promise<ProjectModel | null> {
     return this.prisma.project.findUnique({
       where: projectWhereUniqueInput
     });
@@ -20,7 +20,7 @@ export class ProjectsService {
     cursor?: Prisma.ProjectWhereUniqueInput;
     where?: Prisma.ProjectWhereInput;
     orderBy?: Prisma.ProjectOrderByWithRelationInput;
-  }): Promise<Project[]> {
+  }): Promise<ProjectModel[]> {
     const { skip, take, cursor, where, orderBy } = params;
     return this.prisma.project.findMany({
       skip,
@@ -31,7 +31,7 @@ export class ProjectsService {
     });
   }
   
-  async createProject(data: Prisma.ProjectCreateInput): Promise<Project> {
+  async createProject(data: Prisma.ProjectCreateInput): Promise<ProjectModel> {
     return this.prisma.project.create({
       data,
     });
@@ -40,7 +40,7 @@ export class ProjectsService {
   async updateProject(params: {
     where: Prisma.ProjectWhereUniqueInput;
     data: Prisma.ProjectUpdateInput;
-  }): Promise<Project> {
+  }): Promise<ProjectModel> {
     const { data, where } = params;
     return this.prisma.project.update({
       data,
@@ -48,7 +48,7 @@ export class ProjectsService {
     });
   }
 
-  async deleteProject(where: Prisma.ProjectWhereUniqueInput): Promise<Project> {
+  async deleteProject(where: Prisma.ProjectWhereUniqueInput): Promise<ProjectModel> {
     return this.prisma.project.delete({
       where,
     });
